@@ -10,6 +10,9 @@ describe("Endpoints", () => {
           get: jest.fn().mockResolvedValue({ data: 1 }),
         }
         const res = {
+          // Due in the endpoint we run 'res.status(200).send(data)', we see that send is a method of status.
+          // Then, status must return This (res). Hence, we use .mockReturnThis() method 
+          // in 'status' property to return 'res' and so we can nest the 'send' method to 'status'
           status: jest.fn().mockReturnThis(),
           send: jest.fn()
         }
