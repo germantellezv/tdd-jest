@@ -47,5 +47,48 @@ describe("Endpoints", () => {
       })
     })
 
+    describe("PUT", () => {
+      it("Update resource", async () => {
+        const axios = {
+          put: jest.fn()
+        }
+        const req = {
+          body: 'request body',
+          params: {
+            id: 12
+          }
+        }
+        const res = {
+          sendStatus: jest.fn()
+        }
+        
+        await handlers({ axios }).put(req, res)
+
+        expect(axios.put.mock.calls).toEqual([['https://jsonplaceholder.typicode.com/users/12','request body']])
+        expect(res.sendStatus.mock.calls).toEqual([[204]])
+      })
+    })
+
+    describe("DELETE", () => {
+      it("Delete resource", async () => {
+        const axios = {
+          delete: jest.fn()
+        }
+        const req = {
+          params: {
+            id: 11
+          }
+        }
+        const res = {
+          sendStatus: jest.fn()
+        }
+
+        await handlers({ axios }).delete(req, res)
+        expect(axios.delete.mock.calls).toEqual([['https://jsonplaceholder.typicode.com/users/11']])
+        expect(res.sendStatus.mock.calls).toEqual([[204]])
+
+      })
+    })
+
   })
 })

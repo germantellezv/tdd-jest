@@ -11,9 +11,9 @@ const handlers = ({axios}) => ({
     res.status(200).send(data)
   }, 
   put: async (req, res) => {
-    const { id } = req.params
     const { body } = req
-    const { data } = await axios.put(`https://jsonplaceholder.typicode.com/users/${id}`, body)
+    const { id } = req.params
+    await axios.put(`https://jsonplaceholder.typicode.com/users/${id}`, body)
     res.sendStatus(204)
   },
   delete: async (req, res) => {

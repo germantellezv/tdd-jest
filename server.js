@@ -12,9 +12,9 @@ app.use(bodyParser.json())
 
 const userHandlers = users({axios})
 app.get("/", userHandlers.get);
-app.post("/", );
-app.put("/:id", );
-app.delete("/:id", );
+app.post("/", userHandlers.post);
+app.put("/:id", userHandlers.put);
+app.delete("/:id", userHandlers.delete);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
