@@ -33,5 +33,35 @@ describe('Endpoints', () => {
 
 
     });
+    it('should not create post if user id does not exist', async () => {
+      const mockUsers = [
+        {id: 1},
+        {id: 2}
+      ]
+      const post = {
+        userId: 3,
+        title: "Titulo",
+        body: "Cuerpo del post"
+      }
+      const req = {
+        body: post
+      }
+      const res = {
+        status: jest.fn().mockReturnThis(),
+        send: jest.fn(),
+        sendStatus: jest.fn(),
+      }
+
+      const axios = {
+        get: jest.fn().mockResolvedValue({ data: mockUsers}),
+        post: jest.fn().mockResolvedValue( {data: {id:1000}})
+      }
+      
+      await postsHandlers({axios}).post(req,res)
+
+      expect(axios.post.mock.calls).toEqual([])
+      expect(res.sendStatus.mock.calls).toEqual([[400]])
+
+    });
   });
 });

@@ -8,7 +8,7 @@ describe("Middlewares", () => {
       */
 
       const req = {
-        header: jest.fn().mockReturnValue(1),
+        header: jest.fn().mockReturnValue("1"),
       };
       const res = {
         sendStatus: jest.fn(),
@@ -23,7 +23,7 @@ describe("Middlewares", () => {
 
     it("Must fail if the user id is not 1", () => {
       const req = {
-        header: jest.fn().mockReturnValue(2),
+        header: jest.fn().mockReturnValue("2"),
       };
       const res = {
         sendStatus: jest.fn(),

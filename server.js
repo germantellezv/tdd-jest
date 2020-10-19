@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
-const postsHandlers = users({axios})
+const postsHandlers = posts({axios})
 app.post("/", authenticate,postsHandlers.post);
 
 app.listen(port, () => {
