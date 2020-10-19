@@ -13,7 +13,8 @@
   "devDependencies": {
     "@types/jest": "^26.0.14",
     "jest": "^26.5.3",
-    "nodemon": "^2.0.5"
+    "nodemon": "^2.0.5",
+    "supertest": "^5.0.0"
   },
   "dependencies": {
     "axios": "^0.20.0",

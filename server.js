@@ -4,7 +4,7 @@ const { posts }= require('./endpoints/index')
 const { authenticate } = require('./middlewares')
 var bodyParser = require('body-parser')
 const app = express();
-const port = 3000;
+const port = 3001;
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -19,3 +19,4 @@ app.listen(port, () => {
 });
 
 
+module.exports = app
